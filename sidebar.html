@@ -1,0 +1,123 @@
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <title>Responsive Sidebar Example</title>
+              <!-- Tailwind CSS CDN -->
+              <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+              <style>
+                /* Custom styles if needed */
+              </style>
+            </head>
+            <body class="bg-gray-100">
+              <div class="flex h-screen overflow-hidden">
+                <!-- Sidebar (Mobile & Desktop) -->
+                <div id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-gray-900 transform transition-transform duration-300 ease-in-out
+                                -translate-x-full md:translate-x-0 md:static md:inset-0">
+                  <div class="flex flex-col h-full">
+                    <!-- Header with Logo and Close Button (Mobile) -->
+                    <div class="flex items-center justify-between md:hidden p-4 bg-gray-800">
+                      <img class="h-8 w-auto" src="https://artegama.com/assets/artegama-Bc2nnwES.png" alt="Logo">
+                      <button id="close-sidebar" class="text-gray-400 hover:text-white focus:outline-none">
+                        <span class="sr-only">Close sidebar</span>
+                        <!-- X-Mark Icon -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    <!-- Logo (Desktop) -->
+                    <div class="hidden md:flex items-center justify-center h-16 bg-gray-800">
+                      <img class="h-8 w-auto" src="https://artegama.com/assets/artegama-Bc2nnwES.png" alt="Logo">
+                    </div>
+                    <!-- Navigation -->
+                    <nav class="flex-1 px-2 py-4 space-y-1">
+                      <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
+                        <svg class="mr-3 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        Dashboard
+                      </a>
+                      <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
+                        <svg class="mr-3 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.96a1 1 0 00.95.69h4.164c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.286 3.96c.3.921-.755 1.688-1.54 1.118l-3.37-2.45a1 1 0 00-1.175 0l-3.37 2.45c-.784.57-1.838-.197-1.54-1.118l1.286-3.96a1 1 0 00-.364-1.118l-3.37-2.45c-.784-.57-.38-1.81.588-1.81h4.164a1 1 0 00.95-.69l1.286-3.96z" />
+                        </svg>
+                        Settings
+                      </a>
+                      <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
+                        <svg class="mr-3 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.96a1 1 0 00.95.69h4.164c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.286 3.96c.3.921-.755 1.688-1.54 1.118l-3.37-2.45a1 1 0 00-1.175 0l-3.37 2.45c-.784.57-1.838-.197-1.54-1.118l1.286-3.96a1 1 0 00-.364-1.118l-3.37-2.45c-.784-.57-.38-1.81.588-1.81h4.164a1 1 0 00.95-.69l1.286-3.96z" />
+                        </svg>
+                        Settings
+                      </a>
+
+                      <!-- Add more navigation items as needed -->
+                    </nav>
+                  </div>
+                </div>
+            
+                <!-- Overlay (Mobile) -->
+                <div id="overlay" class="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity opacity-0 pointer-events-none md:hidden"></div>
+            
+                <!-- Main Content Area -->
+                <div class="flex-1 flex flex-col">
+                  <!-- Header -->
+                  <header class="w-full bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center">
+                      <!-- Hamburger menu button -->
+                      <button id="open-sidebar" class="md:hidden text-gray-500 hover:bg-gray-200 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open sidebar</span>
+                        <!-- Hamburger Icon -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                      </button>
+                      <!-- Dashboard Title -->
+                      <h1 class="text-3xl font-bold text-gray-900 ml-4">Dashboard</h1>
+                    </div>
+                  </header>
+            
+                  <!-- Main Content -->
+                  <main class="flex-1">
+                    <div class="py-6">
+                      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <!-- Replace with your content -->
+                        <div class="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
+                          <span class="text-gray-500">Main Content Area</span>
+                        </div>
+                        <!-- /End replace -->
+                      </div>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            
+              <!-- JavaScript for interactivity -->
+              <script>
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('overlay');
+                const openSidebarBtn = document.getElementById('open-sidebar');
+                const closeSidebarBtn = document.getElementById('close-sidebar');
+            
+                const openSidebar = () => {
+                  sidebar.classList.remove('-translate-x-full');
+                  sidebar.classList.add('translate-x-0');
+                  overlay.classList.remove('opacity-0', 'pointer-events-none');
+                  overlay.classList.add('opacity-75', 'pointer-events-auto');
+                };
+            
+                const closeSidebar = () => {
+                  sidebar.classList.remove('translate-x-0');
+                  sidebar.classList.add('-translate-x-full');
+                  overlay.classList.remove('opacity-75', 'pointer-events-auto');
+                  overlay.classList.add('opacity-0', 'pointer-events-none');
+                };
+            
+                openSidebarBtn.addEventListener('click', openSidebar);
+                closeSidebarBtn.addEventListener('click', closeSidebar);
+                overlay.addEventListener('click', closeSidebar);
+              </script>
+            </body>
+            </html>
+            
